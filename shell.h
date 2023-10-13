@@ -12,15 +12,15 @@ static char **gArgs = NULL;
 static char *env_vars[100];
 
 /*Handlers*/
-void handle_shell();
-int handle_piped_shell();
+void handle_shell(void);
+int handle_piped_shell(void);
 
-void handle_unsetenv();
-void handle_setenv();
-void handle_getenv();
-void handle_exit();
+void handle_unsetenv(void);
+void handle_setenv(void);
+void handle_getenv(void);
+void handle_exit(void);
 
-void interrupt_handler();
+void interrupt_handler(void);
 void signal_handler(int signal_number);
 
 /*Utils*/
@@ -33,23 +33,23 @@ int _strcmp(char *s1, char *s2);
 int count_words(char *s);
 
 /*Cycle functions*/
-void alloc_err();
-void free_all();
+void alloc_err(void);
+void free_all(void);
 int fill_args(int count, char *buffer);
 int _getline(char *buffer);
 
 /*Command functions*/
-void exe_command();
-void exe_ncommand();
+void exe_command(void);
+void exe_ncommand(void);
 void command_process(char *buffer);
-void exe_path();
-void command_to_path();
+void exe_path(void);
+void command_to_path(void);
 
 /*Env related functions*/
 char *_getenv(char *name, int val_only);
 void _setenv(char *name, char *value);
 void realloc_environ(char *var, int op);
 
-void handle_cd();
+void handle_cd(void);
 
 #endif
