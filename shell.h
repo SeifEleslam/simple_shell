@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,8 +8,8 @@
 #include <sys/types.h>
 
 extern char **environ;
-char **gArgs = NULL;
-char *env_vars[100];
+static char **gArgs = NULL;
+static char *env_vars[100];
 
 /*Handlers*/
 void handle_shell();
