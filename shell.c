@@ -35,7 +35,7 @@ void signal_handler(int signal_number)
 /**
  * interrupt_handler - handle ^C
  */
-void interrupt_handler()
+void interrupt_handler(void)
 {
 	free_all(), free_env();
 	_exit(0);
@@ -45,7 +45,7 @@ void interrupt_handler()
  * signal_handler - handle signals
  * Return: 0 on Success
  */
-int handle_piped_shell()
+int handle_piped_shell(void)
 {
 	int bytes_read, count;
 	char buffer[1024];
@@ -60,7 +60,7 @@ int handle_piped_shell()
 /**
  * handle_shell - handle signals
  */
-void handle_shell()
+void handle_shell(void)
 {
 	char buffer[1024];
 
