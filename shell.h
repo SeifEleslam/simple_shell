@@ -8,12 +8,13 @@
 #include <sys/types.h>
 
 extern char **environ;
-static char **gArgs = NULL;
+static char **gArgs;
 static char *env_vars[100];
 
 /*Handlers*/
 void handle_shell(void);
 int handle_piped_shell(void);
+void init_global_vars();
 
 void handle_unsetenv(void);
 void handle_setenv(void);
