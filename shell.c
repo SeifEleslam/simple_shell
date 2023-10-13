@@ -8,7 +8,7 @@
  */
 int main(int ac, char *av)
 {
-	init_env_vars();
+	init_global_vars();
 	signal(SIGINT, signal_handler);
 	if (handle_piped_shell() == 0)
 		return (0);
@@ -33,16 +33,19 @@ void signal_handler(int signal_number)
 }
 
 /**
- * interrupt_handler - handle ^C
+ * init_global_vars - handle ^C
  */
-void interrupt_handler(void)
+void init_global_vars(void)
 {
-	free_all(), free_env();
-	_exit(0);
+	int i;
+
+	gArgs = NULL;
+	for (i = 0; i < 100; i++)
+		env_vars[i] = NULL;
 }
 
 /**
- * signal_handler - handle signals
+ * handle_piped_shell - handle signals
  * Return: 0 on Success
  */
 int handle_piped_shell(void)
