@@ -12,7 +12,7 @@ void interrupt_handler(void)
 /**
  * handle_exit - handle signals
  */
-void handle_exit()
+void handle_exit(void)
 {
 	if (gArgs[1] && !gArgs[2])
 		free_all(), free_env(), _exit(str_to_int(gArgs[1]));
@@ -22,7 +22,7 @@ void handle_exit()
 /**
  * handle_env - handle signals
  */
-void handle_env()
+void handle_env(void)
 {
 	int i;
 
@@ -33,10 +33,11 @@ void handle_env()
 	}
 }
 
-void handle_setenv()
+void handle_setenv(void)
 {
 	if (!gArgs[0] || !gArgs[1] || !gArgs[2])
-		handled_write(STDERR_FILENO, "Usage: setenv [VARIABLE_NAME] [VARIABLE_VALUE]\n", 48);
+		handled_write(STDERR_FILENO,
+			"Usage: setenv [VARIABLE_NAME] [VARIABLE_VALUE]\n", 48);
 	else
 		_setenv(gArgs[1], gArgs[2]);
 }
