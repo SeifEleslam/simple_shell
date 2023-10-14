@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * interrupt_handler - handle signals
