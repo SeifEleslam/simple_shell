@@ -33,6 +33,9 @@ void handle_env(void)
 	}
 }
 
+/**
+ * handle_setenv - handle signals
+ */
 void handle_setenv(void)
 {
 	if (!gArgs[0] || !gArgs[1] || !gArgs[2])
