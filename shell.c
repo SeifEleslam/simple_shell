@@ -55,7 +55,9 @@ int handle_piped_shell(void)
 
 	if (isatty(STDIN_FILENO) != 0)
 		return (1);
-	bytes_read = read(STDIN_FILENO, buffer, sizeof(char) * 1024);
+	bytes_read = handled_read(STDIN_FILENO, buffer, sizeof(char) * 1024);
+	if (bytes_read < 0)
+		return (1);
 	command_process(buffer);
 	return (0);
 }
@@ -69,7 +71,7 @@ void handle_shell(void)
 
 	while (1)
 	{
-		write(1, "simple_shell$ ", 15);
+		handled_write(1, "simple_shell$ ", 15);
 		if (_getline(buffer) != 0)
 			continue;
 		command_process(buffer);
