@@ -35,6 +35,9 @@ int count_words(char *s);
 
 /*Cycle functions*/
 void alloc_err(void);
+int handled_read(int fd, void *buff, size_t n);
+int handled_write(int fd, void *buff, size_t n);
+
 void free_all(void);
 int fill_args(int count, char *buffer);
 int _getline(char *buffer);
