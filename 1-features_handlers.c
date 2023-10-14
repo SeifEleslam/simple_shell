@@ -44,3 +44,16 @@ void handle_setenv(void)
 	else
 		_setenv(gArgs[1], gArgs[2]);
 }
+
+/**
+ * handle_unsetenv - handle signals
+ */
+void handle_unsetenv(void)
+{
+	if (!gArgs[0] || !gArgs[1])
+		handled_write(STDERR_FILENO, "Usage: unsetenv [VARIABLE_NAME]\n", 33);
+	else if (_getenv(gArgs[1], 1) == NULL)
+		handled_write(STDERR_FILENO, "variable doesn't exist\n", 24);
+	else
+		realloc_environ(gArgs[1], 0);
+}
