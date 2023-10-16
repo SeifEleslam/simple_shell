@@ -53,7 +53,7 @@ int handle_piped_shell()
 {
 	int total, bytes_read, handled_bytes, len;
 	char *line, *buffer;
-	
+
 	if (isatty(STDIN_FILENO) != 0)
 		return (1);
 	buffer = NULL, line = NULL, len = 0, total = 0;
