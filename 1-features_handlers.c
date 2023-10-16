@@ -5,7 +5,7 @@
  */
 void interrupt_handler(void)
 {
-	free_all(), free_env();
+	free_all();
 	_exit(0);
 }
 
@@ -14,9 +14,13 @@ void interrupt_handler(void)
  */
 void handle_exit(void)
 {
+	int tmp_status;
+
+	if (gArgs[1])
+		tmp_status = str_to_int(gArgs[1]);
 	if (gArgs[1] && !gArgs[2])
-		free_all(), free_env(), _exit(str_to_int(gArgs[1]));
-	free_all(), free_env(), _exit(0);
+		free_all(), _exit(handle_status(tmp_status));
+	free_all(), _exit(handle_status(status));
 }
 
 /**
