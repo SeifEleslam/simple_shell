@@ -50,3 +50,56 @@ int count_words(char *s)
 		count++;
 	return (count);
 }
+
+/**
+ * count_words - get words count
+ * @buff: str
+ * @index: int
+ */
+void remove_char(char *buff, int index)
+{
+	int i;
+
+	for (i = 0; buff[i] != '\0'; i++)
+		if (i >= index)
+			buff[i] = buff[i + 1];
+}
+
+
+/**
+ * _realloc - allocate memory and set to 0
+ * @ptr: unsigned int
+ * @old_size: unsigned int
+ * @new_size: unsigned int
+ * Return: void*
+ */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+	char *newptr;
+	unsigned int i;
+
+	if (new_size == old_size)
+		return (ptr);
+	if (ptr == NULL)
+	{
+		newptr = malloc(new_size);
+			if (newptr == NULL)
+				return (NULL);
+		return (newptr);
+	}
+	if (new_size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	newptr = malloc(new_size);
+	if (newptr == NULL)
+		return (NULL);
+	if (ptr == NULL)
+		return (newptr);
+	for (i = 0; i < old_size && i < new_size; i++)
+		newptr[i] = ((char *)ptr)[i];
+	free(ptr);
+	return (newptr);
+}
