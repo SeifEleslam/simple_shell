@@ -73,13 +73,13 @@ void remove_char(char *buff, int index)
  */
 int cp_line(char *buff, char *line)
 {
-    int i, line_len, q, dq;
+	int i, line_len, q, dq;
 
-    q = 0, dq = 0, line_len = 0;
-    for (i = 0; (buff[i] != '\n' || q + dq != 0) && buff[i] != '\0'; i++)
-        line[i] = buff[i];
-    line[i] = '\0';
-    return i + 1;
+	q = 0, dq = 0, line_len = 0;
+	for (i = 0; (buff[i] != '\n' || q + dq != 0) && buff[i] != '\0'; i++)
+		line[i] = buff[i];
+	line[i] = '\0';
+	return i + 1;
 }
 
 /**
