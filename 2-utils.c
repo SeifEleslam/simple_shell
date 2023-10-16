@@ -79,7 +79,7 @@ int cp_line(char *buff, char *line)
 	for (i = 0; (buff[i] != '\n' || q + dq != 0) && buff[i] != '\0'; i++)
 		line[i] = buff[i];
 	line[i] = '\0';
-	return i + 1;
+	return (i + 1);
 }
 
 /**
