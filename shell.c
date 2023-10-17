@@ -6,7 +6,7 @@
  * @av: arguments pointers
  * Return: 0 on Success
  */
-int main(int ac, char *av)
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av)
 {
 	init_global_vars();
 	signal(SIGINT, signal_handler);
