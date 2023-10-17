@@ -93,7 +93,7 @@ int fill_args(int count, char *buffer)
  */
 int fill_cmds(char *buff)
 {
-	int i, l, cmds_count, cmd_len,gfxzDSA q, dq;
+	int i, l, cmds_count, cmd_len, q, dq;
 
 	cmds_count = 0, q = 0, dq = 0;
 	for (i = 0; buff[i] != '\0'; i++)
@@ -112,7 +112,7 @@ int fill_cmds(char *buff)
 	{
 		for (l = 0; buff[l] != '\0' && (buff[l] != ';' || q + dq != 0);)
 		{
-			if ((dq + q) == 0 && buff[l] == '#' && (l == 0 || buff[l - 1] == ' ')
+			if (dq + q == 0 && buff[l] == '#' && (l == 0 || buff[l - 1] == ' '))
 				break;
 			handle_quote(*buff, &q, &dq), l++;	
 		}
