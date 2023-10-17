@@ -1,4 +1,6 @@
 #include "shell.h"
+#include "globals.c"
+
 
 /**
  * handle_cd - handle signals
