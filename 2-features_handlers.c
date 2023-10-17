@@ -19,7 +19,8 @@ void handle_cd(void)
 		handled_write(STDERR_FILENO, "can't find OLDOWD var!\n", 24);
 		return;
 	}
-	p_stat = chdir(gArgs[1] ? _strcmp(gArgs[1], "-") == 0 ? _getenv("OLDPWD", 1) : gArgs[1] : _getenv("HOME", 1));
+	p_stat = chdir(gArgs[1] ? _strcmp(gArgs[1], "-") == 0
+		? _getenv("OLDPWD", 1) : gArgs[1] : _getenv("HOME", 1));
 	if (p_stat != 0)
 	{
 		status = 1;
@@ -92,8 +93,8 @@ int handle_quote(char c, int *q, int *dq)
  * @buff: void
  * @start: int
  * @q: int
- * dq: int
- * arrow: int
+ * @dq: int
+ * @arrow: int
  * Return: int
  */
 int read_whole(char *buff, int start, int *q, int *dq, int arrow)
@@ -115,6 +116,7 @@ int read_whole(char *buff, int start, int *q, int *dq, int arrow)
 		else if (buff[i] == '\"' && *q == 0)
 			*dq = *dq == 1 ? 0 : 1;
 	}
-	return (bytes_read + (*dq || *q && buff[bytes_read - 1] == '\n' && bytes_read > 0 ?
+	return (bytes_read + (*dq || *q && 
+		buff[bytes_read - 1] == '\n' && bytes_read > 0 ?
 		read_whole(buff, start + bytes_read, q, dq, 1) : 0));
 }
