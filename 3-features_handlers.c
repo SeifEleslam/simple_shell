@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * alloc_err - malloc err handler
