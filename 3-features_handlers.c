@@ -32,7 +32,7 @@ int handle_status(int val)
  */
 int get_path(char *paths, char *path)
 {
-	int i, l;
+	int i;
 
 	for (i = 0; *paths != ':' && *paths != '\0'; paths++, i++)
 		path[i] = *paths;
@@ -62,7 +62,7 @@ int fill_args(int count, char *buffer)
 	for (i = 0; i < count; i++)
 	{
 		word_len = 0;
-		while (*buffer && *buffer == ' ' || *buffer == '\t')
+		while ((*buffer && *buffer == ' ') || *buffer == '\t')
 			buffer++;
 		for (l = 0; ((buffer[l] != '\t' && buffer[l] != ' ')
 			|| (dq || q)) && buffer[l] != '\0'; l++)
