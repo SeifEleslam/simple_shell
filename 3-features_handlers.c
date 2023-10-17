@@ -1,4 +1,6 @@
 #include "shell.h"
+#include "globals.c"
+
 
 /**
  * alloc_err - malloc err handler
