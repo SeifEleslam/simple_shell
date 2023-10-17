@@ -75,7 +75,6 @@ char *_getenv(char *name, int val_only);
 void _setenv(char *name, char *value);
 void realloc_environ(char *var, int op);
 
-void *_realloc(void *ptr, int old_size, int new_size);
 void alloc_new_var(char *new_var);
 
 /* void write_env(char **environ);*/
