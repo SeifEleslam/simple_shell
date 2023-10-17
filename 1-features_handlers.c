@@ -1,7 +1,6 @@
 #include "shell.h"
 
-static char **gArgs;
-static int status;
+
 
 /**
  * interrupt_handler - handle signals
