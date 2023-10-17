@@ -94,12 +94,12 @@ int fill_args(int count, char *buffer)
  */
 int fill_cmds(char *buff)
 {
-	int i, l, cmds_count, q, dq;
+	int i, l, cmds_count, cmd_len,gfxzDSA q, dq;
 
 	cmds_count = 0, q = 0, dq = 0;
 	for (i = 0; buff[i] != '\0'; i++)
 		if (handle_quote(buff[i], &q, &dq) == 0 && buff[i] == ';' && q + dq == 0)
-		cmds_count++;
+			cmds_count++;
 	cmds_count++;
 	cmds = malloc(sizeof(char *) * cmds_count + 1);
 	if (!cmds)
@@ -112,7 +112,11 @@ int fill_cmds(char *buff)
 	for (i = 0; i < cmds_count; i++)
 	{
 		for (l = 0; buff[l] != '\0' && (buff[l] != ';' || q + dq != 0);)
-			handle_quote(*buff, &q, &dq), l++;
+		{
+			if ((dq + q) == 0 && buff[l] == '#' && (l == 0 || buff[l - 1] == ' ')
+				break;
+			handle_quote(*buff, &q, &dq), l++;	
+		}
 		if (l <= 0)
 			continue;
 		cmds[i] = malloc(sizeof(char) * (l + 1)), cmds[i][l] = '\0';
@@ -121,7 +125,8 @@ int fill_cmds(char *buff)
 			free_cmds(), alloc_err();
 			return (-1);
 		}
-		for (l = 0; *buff != '\0' && (*buff != ';' || q + dq != 0); buff++, l++)
+		cmd_len = l;
+		for (l = 0; i < cmd_len; buff++, l++)
 			handle_quote(*buff, &q, &dq), cmds[i][l] = *buff;
 		buff++;
 	}
