@@ -80,3 +80,21 @@ void exe_path(void)
 	else
 		exe_command();
 }
+
+/**
+ * alloc_new_var - execute
+ * @new_var - var
+ */
+void alloc_new_var(char *new_var)
+{
+	int i;
+
+	for (i = 0; i < 99; i++)
+	{
+		if (env_vars[i] == NULL)
+		{
+			env_vars[i] = new_var;
+			break;
+		}
+	}
+}
