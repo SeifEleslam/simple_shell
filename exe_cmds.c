@@ -1,4 +1,5 @@
 #include "shell.h"
+#include "globals.c"
 
 /**
  * exe_command - execute
