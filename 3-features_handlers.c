@@ -114,7 +114,7 @@ int fill_cmds(char *buff)
 		{
 			if (dq + q == 0 && buff[l] == '#' && (l == 0 || buff[l - 1] == ' '))
 				break;
-			handle_quote(*buff, &q, &dq), l++;	
+			handle_quote(*buff, &q, &dq), l++;
 		}
 		if (l <= 0)
 			continue;
