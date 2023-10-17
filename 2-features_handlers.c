@@ -16,7 +16,7 @@ void handle_cd(void)
 	else if (gArgs[1] && _strcmp(gArgs[1], "-") == 0 && !_getenv("OLDPWD", 1))
 	{
 		status = 1;
-		handled_write(STDERR_FILENO, "can't find OLDOWD var!\n", 24);
+		handled_write(STDERR_FILENO, "can't find OLDPWD var!\n", 24);
 		return;
 	}
 	p_stat = chdir(gArgs[1] ? _strcmp(gArgs[1], "-") == 0
