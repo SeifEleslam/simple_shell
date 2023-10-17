@@ -13,7 +13,8 @@ int _getline(char *buffer)
 	bytes_read = read_whole(buffer, 0, &q, &dq, 0);
 	if (bytes_read < 0)
 	{
-		handled_write(STDERR_FILENO, "\nshell: unexpected EOF while looking for matching \"\'\n", 54);
+		handled_write(STDERR_FILENO,
+			"\nshell: unexpected EOF while looking for matching \"\'\n", 54);
 		return (1);
 	}
 	if (buffer[bytes_read - 1] != '\n')
