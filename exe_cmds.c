@@ -3,10 +3,10 @@
 /**
  * exe_command - execute
  */
-void exe_command()
+void exe_command(void)
 {
 	pid_t pid;
-	
+
 	pid = fork();
 	if (pid == 0 && execve(*gArgs, gArgs, environ) == -1)
 	{
@@ -63,7 +63,7 @@ void command_process(char *buffer)
 /**
  * exe_path - execute
  */
-void exe_path()
+void exe_path(void)
 {
 	if (_strcmp(gArgs[0], "exit") == 0)
 		handle_exit();
