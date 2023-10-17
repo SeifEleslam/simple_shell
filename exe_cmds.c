@@ -25,7 +25,12 @@ void exe_ncommand(void)
 	pid_t pid;
 	char buff[1024];
 
-	command_to_path(buff);
+	if (command_to_path(buff) != 0)
+	{
+		handled_write(STDERR_FILENO, "./shell: command doens't exits\n", 32);
+		status = 127;
+		return;
+	}
 	pid = fork();
 	if (pid == 0 && _strlen(buff) > 0 && execve(buff, gArgs, environ) == -1)
 	{
