@@ -49,7 +49,7 @@ void init_global_vars(void)
  * handle_piped_shell - handle signals
  * Return: 0 on Success
  */
-int handle_piped_shell()
+int handle_piped_shell(void)
 {
 	int total, bytes_read, handled_bytes, len;
 	char *line, *buffer;
@@ -71,7 +71,8 @@ int handle_piped_shell()
 	if (buffer[bytes_read - 1] == '\n')
 		buffer[bytes_read - 1] = '\0';
 	while (handled_bytes < bytes_read)
-		handled_bytes += cp_line(buffer + handled_bytes, line), command_process(line);
+		handled_bytes += cp_line(buffer + handled_bytes, line),
+		command_process(line);
 	free(buffer), free(line);
 	exit(handle_status(status));
 	return (0);
