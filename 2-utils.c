@@ -89,10 +89,10 @@ int cp_line(char *buff, char *line)
  * @new_size: unsigned int
  * Return: void*
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_realloc(void *ptr, int old_size, int new_size)
 {
 	char *newptr;
-	unsigned int i;
+	int i;
 
 	if (new_size == old_size)
 		return (ptr);
