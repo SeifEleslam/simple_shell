@@ -32,7 +32,7 @@ int _getline(char *buffer)
  * @val_only: char
  * Return: int
  */
-char *_getenv(char *name, int val_only);
+char *_getenv(char *name, int val_only)
 {
 	int i, name_len;
 
@@ -120,7 +120,6 @@ int command_to_path(char *buff)
 	all_paths = _getenv("PATH", 1);
 	if (all_paths == NULL)
 		return (1);
-	tmp = *gArgs;
 	if (*all_paths == ':' && lstat(*gArgs, &st) == 0)
 	{
 		str_append(*gArgs, buff, 0);
