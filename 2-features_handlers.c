@@ -116,7 +116,7 @@ int read_whole(char *buff, int start, int *q, int *dq, int arrow)
 		else if (buff[i] == '\"' && *q == 0)
 			*dq = *dq == 1 ? 0 : 1;
 	}
-	return (bytes_read + (*dq || *q &&
+	return (bytes_read + ((*dq || *q) &&
 		 buff[bytes_read - 1] == '\n' && bytes_read > 0 ?
 		read_whole(buff, start + bytes_read, q, dq, 1) : 0));
 }
