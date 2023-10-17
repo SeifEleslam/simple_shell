@@ -39,7 +39,7 @@ void exe_ncommand(void)
 
 /**
  * command_process - execute
- * buffer: buff
+ * @buffer: buff
  */
 void command_process(char *buffer)
 {
