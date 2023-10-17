@@ -117,7 +117,6 @@ int command_to_path(char *buff)
 	int len;
 	struct stat st;
 
-	i = 0;
 	all_paths = _getenv("PATH", 1);
 	if (all_paths == NULL)
 		return (1);
