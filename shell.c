@@ -1,5 +1,5 @@
 #include "shell.h"
-
+#include "globals.c"
 
 /**
  * main - the starting point of shell
