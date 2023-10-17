@@ -19,9 +19,9 @@ int handle_status(int val)
 	if (val > 255 || val < 0)
 	{
 		handled_write(STDERR_FILENO, "exit: Illegal status code", 26);
-		return 2;
+		return (2);
 	}
-	return val;
+	return (val);
 }
 
 /**
@@ -37,7 +37,7 @@ int get_path(char *paths, char *path)
 	for (i = 0; *paths != ':' && *paths != '\0'; paths++, i++)
 		path[i] = *paths;
 	path[i] = '\0';
-	return i;
+	return (i);
 }
 
 /**
@@ -55,7 +55,7 @@ int fill_args(int count, char *buffer)
 	if (!gArgs)
 	{
 		alloc_err();
-		return -1;
+		return (-1);
 	}
 	for (i = 0; i < count + 1; i++)
 		gArgs[i] = NULL;
@@ -64,7 +64,8 @@ int fill_args(int count, char *buffer)
 		word_len = 0;
 		while (*buffer && *buffer == ' ' || *buffer == '\t')
 			buffer++;
-		for (l = 0; ((buffer[l] != '\t' && buffer[l] != ' ') || (dq || q)) && buffer[l] != '\0'; l++)
+		for (l = 0; ((buffer[l] != '\t' && buffer[l] != ' ')
+			|| (dq || q)) && buffer[l] != '\0'; l++)
 		{
 			if (handle_quote(buffer[l], &q, &dq) > 0)
 			remove_char(buffer, l), l--;
@@ -81,7 +82,7 @@ int fill_args(int count, char *buffer)
 		gArgs[i][l] = '\0';
 	}
 	gArgs[count] = NULL;
-	return 0;
+	return (0);
 }
 
 /**
@@ -120,7 +121,6 @@ int fill_cmds(char *buff)
 		}
 		for (l = 0; *buff != '\0' && (*buff != ';' || q + dq != 0); buff++, l++)
 			handle_quote(*buff, &q, &dq), cmds[i][l] = *buff;
-		
 		buff++;
 	}
 	return (0);
