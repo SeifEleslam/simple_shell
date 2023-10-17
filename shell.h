@@ -11,11 +11,13 @@
 #include <fcntl.h>
 
 
-extern **gArgs;
-extern **cmds;
-extern *env_vars[100];
-extern status;
-extern **environ;
+extern char **gArgs;
+extern char **cmds;
+extern char *env_vars[100];
+extern int status;
+
+extern char **environ;
+
 
 /*Handlers*/
 void handle_shell(void);
