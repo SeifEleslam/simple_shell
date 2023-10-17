@@ -10,10 +10,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-__attribute__((unused)) static char **gArgs;
-__attribute__((unused)) static char **cmds;
-__attribute__((unused)) static char *env_vars[100];
-__attribute__((unused)) static int status;
+static __attribute__((unused)) char **gArgs;
+static __attribute__((unused)) char **cmds;
+static __attribute__((unused)) char *env_vars[100];
+static __attribute__((unused)) int status;
 extern char **environ;
 
 /*Handlers*/
