@@ -84,7 +84,7 @@ void exe_path(void)
 
 /**
  * alloc_new_var - execute
- * @new_var - var
+ * @new_var: var
  */
 void alloc_new_var(char *new_var)
 {
