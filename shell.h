@@ -10,6 +10,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+
+extern char **environ;
+
 /*Handlers*/
 void handle_shell(void);
 int handle_piped_shell(void);
@@ -60,7 +63,7 @@ void exe_ncommand(void);
 void command_process(char *buffer);
 void exe_path(void);
 
-int command_to_path(void);
+int command_to_path(char *buff);
 
 /*Env related functions*/
 char *_getenv(char *name, int val_only);
