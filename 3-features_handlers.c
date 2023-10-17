@@ -125,7 +125,7 @@ int fill_cmds(char *buff)
 			return (-1);
 		}
 		cmd_len = l;
-		for (l = 0; i < cmd_len; buff++, l++)
+		for (l = 0; l < cmd_len; buff++, l++)
 			handle_quote(*buff, &q, &dq), cmds[i][l] = *buff;
 		buff++;
 	}
