@@ -1,8 +1,8 @@
 #include "shell.h"
-char **gArgs;
-char **cmds;
-char *env_vars[100];
-int status;
+static char **gArgs;
+static char **cmds;
+static char *env_vars[100];
+static int status;
 
 /**
  * main - the starting point of shell
