@@ -1,4 +1,4 @@
-__attribute__((unused)) char **gArgs;
-__attribute__((unused)) char **cmds;
-__attribute__((unused)) char *env_vars[100];
-__attribute__((unused)) int status;
+(void) char **gArgs;
+(void) char **cmds;
+(void) char *env_vars[100];
+(void) int status;
