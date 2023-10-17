@@ -10,10 +10,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-extern char **gArgs;
-extern char **cmds;
-extern char *env_vars[100];
-extern int status;
+static char **gArgs;
+static char **cmds;
+static char *env_vars[100];
+static int status;
 extern char **environ;
 
 /*Handlers*/
