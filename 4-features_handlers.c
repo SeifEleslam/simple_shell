@@ -113,8 +113,8 @@ void realloc_environ(char *var, int op)
  */
 int command_to_path(char *buff)
 {
-	char *all_paths, *tmp;
-	int i, len;
+	char *all_paths;
+	int len;
 	struct stat st;
 
 	i = 0;
