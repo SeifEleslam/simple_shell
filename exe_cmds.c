@@ -10,7 +10,7 @@ void exe_command(void)
 	pid = fork();
 	if (pid == 0 && execve(*gArgs, gArgs, environ) == -1)
 	{
-		perror(*gArgs);
+		error("./shell");
 		exit(127);
 	}
 	wait(&status);
@@ -29,7 +29,7 @@ void exe_ncommand(void)
 	pid = fork();
 	if (pid == 0 && _strlen(buff) > 0 && execve(buff, gArgs, environ) == -1)
 	{
-		perror(*gArgs);
+		perror("./shell");
 		exit(127);
 	}
 	wait(&status);
