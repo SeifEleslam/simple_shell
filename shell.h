@@ -11,6 +11,10 @@
 #include <fcntl.h>
 
 
+extern char **gArgs;
+extern char **cmds;
+extern char *env_vars[100];
+extern int status;
 extern char **environ;
 
 /*Handlers*/
