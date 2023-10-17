@@ -52,7 +52,7 @@ int count_words(char *s)
 }
 
 /**
- * count_words - get words count
+ * remove_char - get words count
  * @buff: str
  * @index: int
  */
@@ -66,7 +66,7 @@ void remove_char(char *buff, int index)
 }
 
 /**
- * count_words - get words count
+ * cp_line - get words count
  * @buff: str
  * @line: char
  * Return: int
