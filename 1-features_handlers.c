@@ -21,8 +21,9 @@ void handle_exit(void)
 	if (gArgs[1])
 		tmp_status = str_to_int(gArgs[1]);
 	if (gArgs[1] && !gArgs[2])
-		free_all(), _exit(handle_status(tmp_status));
-	free_all(), _exit(handle_status(status));
+		tmp_status = handle_status(tmp_status), free_all(), _exit(tmp_status);
+
+	status = handle_status(status), free_all(), _exit(status);
 }
 
 /**
