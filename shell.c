@@ -8,7 +8,7 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-	init_global_vars(av[1]);
+	init_global_vars(av[0]);
 	signal(SIGINT, signal_handler);
 	if (handle_piped_shell() == 0)
 		return (0);
