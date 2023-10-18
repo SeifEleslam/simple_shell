@@ -56,14 +56,6 @@ void _setenv(char *name, char *value)
 	int i, l;
 
 	var_pos = _getenv(name, 0);
-	if (var_pos)
-	{
-		i = _strlen(name) + 1;
-		for (l = 0; value[l] != '\0'; i++, l++)
-			*(var_pos + i) = value[l];
-		*(var_pos + i) = '\0';
-		return;
-	}
 	name_len = _strlen(name);
 	value_len = _strlen(value);
 	total_len = name_len + value_len + 1;
@@ -74,7 +66,10 @@ void _setenv(char *name, char *value)
 	str_append(name, env_var, 0);
 	str_append("=", env_var, name_len);
 	str_append(value, env_var, name_len + 1);
-	realloc_environ(env_var, 1);
+	if (var_pos)
+		environ[_getenvIndex(name)] = env_var;
+	else
+		realloc_environ(env_var, 1);
 }
 
 /**
