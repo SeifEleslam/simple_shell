@@ -34,6 +34,7 @@ void signal_handler(int signal_number)
 
 /**
  * init_global_vars - handle ^C
+ * @pname: char
  */
 void init_global_vars(char *pname)
 {
