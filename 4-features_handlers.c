@@ -53,7 +53,6 @@ void _setenv(char *name, char *value)
 {
 	size_t name_len, value_len, total_len;
 	char *var_pos, *env_var;
-	int i, l;
 
 	var_pos = _getenv(name, 0);
 	name_len = _strlen(name);
