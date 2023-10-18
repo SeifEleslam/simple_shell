@@ -36,3 +36,20 @@ void int_to_str(long int num, char *new_num, int len, int sign)
 		num /= 10;
 	}
 }
+
+
+/**
+ * _getenvIndex - malloc err handler
+ * @name: char
+ * Return: int
+ */
+int _getenvIndex(char *name)
+{
+	int i, name_len;
+
+	name_len = _strlen(name);
+	for (i = 0; environ[i] != NULL && environ[i][1] != '\0'; i++)
+		if (nonexact_strcmp(name, environ[i]) == 0 && environ[i][name_len] == '=')
+			return (i);
+	return (-1);
+}
