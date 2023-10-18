@@ -10,7 +10,7 @@ void exe_command(void)
 	pid = fork();
 	if (pid == 0 && execve(*gArgs, gArgs, environ) == -1)
 	{
-		perror("./shell");
+		perror(*gArgs);
 		exit(127);
 	}
 	wait(&status);
@@ -27,7 +27,7 @@ void exe_ncommand(void)
 
 	if (command_to_path(buff) != 0)
 	{
-		handled_write(STDERR_FILENO, "./shell: command doens't exits\n", 32);
+		custom_perror("not found");
 		status = 127;
 		return;
 	}
