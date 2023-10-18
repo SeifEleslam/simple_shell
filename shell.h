@@ -81,6 +81,7 @@ int command_to_path(char *buff);
 void handle_env(void);
 
 char *_getenv(char *name, int val_only);
+int _getenvIndex(char *name);
 void _setenv(char *name, char *value);
 void realloc_environ(char *var, int op);
 
