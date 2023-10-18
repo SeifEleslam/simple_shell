@@ -17,11 +17,20 @@ void alloc_err(void)
  */
 int handle_status(int val)
 {
-	if (val > 255 || val < 0)
+	char n[10];
+
+	int_to_str(cmd_count, n, _intlen(cmd_count, 10), 0);
+	if (val < 0)
 	{
-		handled_write(STDERR_FILENO, "exit: Illegal status code", 26);
-		return (2);
+		handled_write(STDERR_FILENO, program_name, _strlen(program_name));
+		handled_write(STDERR_FILENO, ": ", 2);
+		handled_write(STDERR_FILENO, n, _strlen(n));
+		handled_write(STDERR_FILENO, ": ", 2);
+		handled_write(STDERR_FILENO, "exit: Illegal number: ", 22);
+		handled_write(STDERR_FILENO, gArgs[1], _strlen(gArgs[1]));
+		handled_write(STDERR_FILENO, "\n", 1);
 	}
+	val = val > 255 ? 1000 % 256 : val < 0 ? 2 : val;
 	return (val);
 }
 
