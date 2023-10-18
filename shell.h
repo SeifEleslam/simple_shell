@@ -24,7 +24,7 @@ extern char **environ;
 /*Handlers*/
 void handle_shell(void);
 int handle_piped_shell(void);
-void init_global_vars(char *);
+void init_global_vars(char *pname);
 
 void handle_unsetenv(void);
 void handle_setenv(void);
