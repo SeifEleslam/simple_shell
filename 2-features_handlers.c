@@ -39,34 +39,6 @@ void handle_cd(void)
 	if (gArgs[1] && _strcmp(gArgs[1], "-") == 0)
 		handled_write(1, cwd, _strlen(cwd)), handled_write(1, "\n", 1);
 }
-/**void handle_cd(void)
-{
-	int p_stat;
-	char cwd[1024];
-
-	if (gArgs[1] == NULL && !_getenv("HOME", 1))
-	{
-		handled_write(STDERR_FILENO, "can't find HOME var!\n", 22);
-		return;
-	}
-	else if (gArgs[1] && _strcmp(gArgs[1], "-") == 0 && !_getenv("OLDPWD", 1))
-	{
-		status = 1;
-		handled_write(STDERR_FILENO, "can't find OLDPWD var!\n", 24);
-		return;
-	}
-	p_stat = chdir(gArgs[1] ? _strcmp(gArgs[1], "-") == 0
-		? _getenv("OLDPWD", 1) : gArgs[1] : _getenv("HOME", 1));
-	if (p_stat != 0)
-	{
-		status = 1;
-		perror(gArgs[1] ? gArgs[1] : _getenv("HOME", 1));
-		return;
-	}
-	_setenv("OLDPWD", _getenv("PWD", 1));
-	getcwd(cwd, sizeof(cwd));
-	_setenv("PWD", cwd);
-}*/
 
 /**
  * handled_read - handle signals
