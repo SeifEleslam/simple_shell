@@ -7,6 +7,41 @@
 void handle_cd(void)
 {
 	int p_stat;
+	char cwd[1024], cmdCount[10], *pwd;
+
+	getcwd(cwd, sizeof(cwd));
+	if (gArgs[1] && _strcmp(gArgs[1], "-") == 0 && !_getenv("OLDPWD", 1))
+	{
+		handled_write(STDOUT_FILENO, cwd, _strlen(cwd));
+		handled_write(STDOUT_FILENO, "\n", 1);
+		return;
+	}
+	else if (gArgs[1] == NULL && !_getenv("HOME", 1))
+		return;
+	p_stat = chdir(gArgs[1] ? _strcmp(gArgs[1], "-") == 0
+				? _getenv("OLDPWD", 1) : gArgs[1] : _getenv("HOME", 1));
+	if (p_stat != 0)
+	{
+		status = 1, int_to_str(cmd_count, cmdCount, _intlen(cmd_count, 10), 0);
+		handled_write(STDERR_FILENO, program_name, _strlen(program_name));
+		handled_write(STDERR_FILENO, ": ", 2);
+		handled_write(STDERR_FILENO, cmdCount, _strlen(cmdCount));
+		handled_write(STDERR_FILENO, ": cd: can't cd to ", 18);
+		handled_write(STDERR_FILENO, gArgs[1], _strlen(gArgs[1]));
+		handled_write(STDERR_FILENO, "\n", 1);
+		return;
+	}
+	pwd = _getenv("PWD", 1);
+	if (pwd)
+		_setenv("OLDPWD", pwd);
+	getcwd(cwd, sizeof(cwd));
+	_setenv("PWD", cwd);
+	if (gArgs[1] && _strcmp(gArgs[1], "-") == 0)
+		handled_write(1, cwd, _strlen(cwd)), handled_write(1, "\n", 1);
+}
+/**void handle_cd(void)
+{
+	int p_stat;
 	char cwd[1024];
 
 	if (gArgs[1] == NULL && !_getenv("HOME", 1))
@@ -31,7 +66,7 @@ void handle_cd(void)
 	_setenv("OLDPWD", _getenv("PWD", 1));
 	getcwd(cwd, sizeof(cwd));
 	_setenv("PWD", cwd);
-}
+}*/
 
 /**
  * handled_read - handle signals
