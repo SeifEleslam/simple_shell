@@ -35,10 +35,12 @@ void signal_handler(int signal_number)
 /**
  * init_global_vars - handle ^C
  */
-void init_global_vars(void)
+void init_global_vars(char *pname)
 {
 	int i;
 
+	cmd_count = 0;
+	program_name = pname;
 	gArgs = NULL;
 	cmds = NULL;
 	for (i = 0; i < 100; i++)
