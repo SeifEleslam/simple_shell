@@ -61,7 +61,7 @@ int fill_args(int count, char *buffer)
 	int i, l, word_len, q, dq;
 
 	q = 0, dq = 0;
-	gArgs = malloc(sizeof(char *) * count + 1);
+	gArgs = malloc(sizeof(char *) * (count + 1));
 	if (!gArgs)
 	{
 		alloc_err();
@@ -109,7 +109,7 @@ int fill_cmds(char *buff)
 		if (handle_quote(buff[i], &q, &dq) == 0 && buff[i] == ';' && q + dq == 0)
 			cmds_count++;
 	cmds_count++;
-	cmds = malloc(sizeof(char *) * cmds_count + 1);
+	cmds = malloc(sizeof(char *) * (cmds_count + 1));
 	if (!cmds)
 	{
 		alloc_err();
