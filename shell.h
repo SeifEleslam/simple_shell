@@ -14,7 +14,9 @@
 extern char **gArgs;
 extern char **cmds;
 extern char *env_vars[100];
+extern char *program_name;
 extern int status;
+extern int cmd_count;
 
 extern char **environ;
 
@@ -22,7 +24,7 @@ extern char **environ;
 /*Handlers*/
 void handle_shell(void);
 int handle_piped_shell(void);
-void init_global_vars(void);
+void init_global_vars(char *);
 
 void handle_unsetenv(void);
 void handle_setenv(void);
@@ -44,6 +46,10 @@ int count_words(char *s);
 void remove_char(char *buff, int index);
 int cp_line(char *buff, char *line);
 void *_realloc(void *ptr, int old_size, int new_size);
+
+int _intlen(long int num, int base);
+void int_to_str(long int num, char *new_num, int len, int sign);
+
 
 /*Cycle functions*/
 void alloc_err(void);
@@ -80,6 +86,7 @@ void realloc_environ(char *var, int op);
 
 void alloc_new_var(char *new_var);
 
+void custom_perror(char *msg);
 /* void write_env(char **environ);*/
 
 #endif
