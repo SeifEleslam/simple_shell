@@ -16,6 +16,7 @@ void free_args(void)
 	gArgs = NULL;
 }
 
+
 /**
  * free_cmds - free
  */
@@ -31,6 +32,7 @@ void free_cmds(void)
 	cmds = NULL;
 }
 
+
 /**
  * free_env - free
  */
@@ -41,6 +43,7 @@ void free_env(void)
 	for (i = 0; i < 100 && env_vars[i] != NULL; i++)
 		free(env_vars[i]);
 }
+
 
 /**
  * free_all - free
