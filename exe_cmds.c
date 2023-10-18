@@ -70,6 +70,7 @@ void command_process(char *buffer)
  */
 void exe_path(void)
 {
+	cmd_count++;
 	if (_strcmp(gArgs[0], "exit") == 0)
 		handle_exit();
 	else if (_strcmp(gArgs[0], "env") == 0)
