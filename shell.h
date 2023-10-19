@@ -15,6 +15,7 @@ extern char **gArgs;
 extern char **cmds;
 extern char *env_vars[100];
 extern char *program_name;
+extern char **pipe_data;
 extern int status;
 extern int cmd_count;
 
