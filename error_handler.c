@@ -30,7 +30,6 @@ void process_args(void)
 
 	for (i = 0; gArgs && gArgs[i]; i++)
 	{
-	
 		if (_strcmp(gArgs[i], "$$") == 0)
 		{
 			pid = getpid();
