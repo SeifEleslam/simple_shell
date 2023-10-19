@@ -55,28 +55,27 @@ void init_global_vars(char *pname)
 int handle_piped_shell(void)
 {
 	int total, bytes_read, handled_bytes, len;
-	char *line, *buffer;
 
 	if (isatty(STDIN_FILENO) != 0)
 		return (1);
-	buffer = NULL, line = NULL, len = 0, total = 0;
+	len = 0, total = 0;
 	handled_bytes = 0, status = 0, bytes_read = 1;
 	while (bytes_read != 0)
 	{
-		len += 1024, buffer = (char *)_realloc(buffer, len - 1024, len);
-		bytes_read = handled_read(STDIN_FILENO, buffer + total, 1024);
+		len += 1024, pipe_data[0] = (char *)_realloc(pipe_data[0], len - 1024, len);
+		bytes_read = handled_read(STDIN_FILENO, pipe_data[0] + total, 1024);
 		total += bytes_read;
 	}
 	bytes_read = total;
-	line = (char *)_realloc(line, 0, len);
+	pipe_data[1] = (char *)_realloc(pipe_data[1], 0, len);
 	if (bytes_read <= 0)
 		return (-1);
-	if (buffer[bytes_read - 1] == '\n')
-		buffer[bytes_read - 1] = '\0';
+	if (pipe_data[0][bytes_read - 1] == '\n')
+		pipe_data[0][bytes_read - 1] = '\0';
 	while (handled_bytes < bytes_read)
-		handled_bytes += cp_line(buffer + handled_bytes, line),
-		command_process(line);
-	free(buffer), free(line);
+		handled_bytes += cp_line(pipe_data[0] + handled_bytes, pipe_data[1]),
+		command_process(pipe_data[1]);
+	free_all();
 	exit(handle_status(status));
 	return (0);
 }
