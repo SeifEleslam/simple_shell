@@ -59,6 +59,7 @@ void command_process(char *buffer)
 			return;
 		if (fill_args(count, cmds[i]) != 0)
 			return;
+		process_args();
 		exe_path();
 		free_args();
 	}
