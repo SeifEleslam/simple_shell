@@ -1,3 +1,4 @@
+#include <stddef.h>
 __attribute__((unused)) char **gArgs;
 __attribute__((unused)) char **cmds;
 __attribute__((unused)) char *env_vars[100];
