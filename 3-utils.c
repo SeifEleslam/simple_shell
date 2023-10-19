@@ -35,6 +35,7 @@ void int_to_str(long int num, char *new_num, int len, int sign)
 		new_num[i] = (num % 10) + '0';
 		num /= 10;
 	}
+	new_num[len] = '\0';
 }
 
 
