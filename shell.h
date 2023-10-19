@@ -66,6 +66,7 @@ void free_env(void);
 void free_cmds(void);
 
 int fill_args(int count, char *buffer);
+void process_args(void);
 int fill_cmds(char *buff);
 int _getline(char *buffer);
 
