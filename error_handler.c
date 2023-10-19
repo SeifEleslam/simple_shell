@@ -18,3 +18,41 @@ void custom_perror(char *msg)
 	handled_write(STDERR_FILENO, msg, _strlen(msg));
 	handled_write(STDERR_FILENO, "\n", 1);
 }
+
+
+/**
+ * process_args - function
+ */
+void process_args(void)
+{
+	int i, pid;
+	char *var;
+
+	for (i = 0; gArgs && gArgs[i]; i++)
+	{
+	
+		if (_strcmp(gArgs[i], "$$") == 0)
+		{
+			pid = getpid();
+			gArgs[i] = _realloc(gArgs[i], 0, _intlen(pid, 10) + 1);
+			int_to_str(pid, gArgs[i], _intlen(pid, 10), 0);
+		}
+		else if (_strcmp(gArgs[i], "$?") == 0)
+		{
+			pid = getpid();
+			gArgs[i] = _realloc(gArgs[i], 0, _intlen(status, 10) + 1);
+			int_to_str(status, gArgs[i], _intlen(status, 10), 0);
+		}
+		else if (gArgs[i][0] == '$' && _strlen(gArgs[i]) > 1)
+		{
+			var = _getenv(gArgs[i] + 1, 1);
+			if (!var)
+			{
+				gArgs[i][0] = '\0';
+				continue;
+			}
+			gArgs[i] = _realloc(gArgs[i], 0, _strlen(var) + 1);
+			str_append(var, gArgs[i], 0);
+		}
+	}
+}
