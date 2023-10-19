@@ -50,6 +50,10 @@ void free_env(void)
  */
 void free_all(void)
 {
+	if(pipe_data[0])
+		free(pipe_data[0]);
+	if(pipe_data[1])
+		free(pipe_data[1]);
 	free_args(), free_env(), free_cmds();
 }
 
